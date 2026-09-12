@@ -1,7 +1,7 @@
-- name: Build with Gradle
-  run: |
-    chmod +x gradlew
-    ./gradlew build --no-daemon
+name: Build HIGOR CLIENT
+
+on:
+  push:
     branches: [ main ]
   workflow_dispatch:
 
@@ -19,10 +19,11 @@ jobs:
           java-version: '8'
           distribution: 'temurin'
 
+      - name: Grant execute permission
+        run: chmod +x gradlew
+
       - name: Build with Gradle
-        run: |
-          cd $GITHUB_WORKSPACE
-          gradle build --no-daemon
+        run: ./gradlew build --no-daemon
 
       - name: Upload JAR
         uses: actions/upload-artifact@v4
