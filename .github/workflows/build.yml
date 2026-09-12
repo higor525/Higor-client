@@ -1,7 +1,7 @@
-name: Build HIGOR CLIENT
-
-on:
-  push:
+- name: Build with Gradle
+  run: |
+    chmod +x gradlew
+    ./gradlew build --no-daemon
     branches: [ main ]
   workflow_dispatch:
 
